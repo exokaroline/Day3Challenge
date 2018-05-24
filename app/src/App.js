@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import axios from 'axios';
+import ReactDOM from 'react-dom';
+import * as V from 'victory';
+import {VictoryBar, VictoryChart, VictoryAxis, VictoryTheme, VictoryStack} from 'victory';
 
 class App extends Component {
   constructor(props) { 
@@ -43,12 +46,16 @@ class App extends Component {
       );
 
     return (
-        <div>{listy}</div>
+       <VictoryChart>
+       <VictoryBar data ={this.state.array}
+       x= "username"
+       y= "total commits" /> 
+       </VictoryChart>
     );
     }
   }
 
 
-//ReactDOM.render(<App/>, document.getElementById('root'));
+ReactDOM.render(<App/>, document.getElementById('root'));
 
 export default App;
