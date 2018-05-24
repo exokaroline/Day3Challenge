@@ -34,22 +34,25 @@ class App extends Component {
   
 
   render() {
-    const listy = (
-      <ul> {this.state.array.map((rest) =>
-        <li key={rest.id} > 
-          <h1> Username: {rest.username} </h1>
-          <h2> ID: {rest.id} </h2>
-          <h3> Commits: {rest.total} </h3>
-      </li>
-    )}
-      </ul>
-      );
-
+    /*let newdata = this.state.array.map((entry)=>{
+      if(entry.total>20){
+        Username:{entry.username}
+        ID: {entry.id}
+        Commits: {entry.total}
+      }
+    }
+  )*/
+  let newdata = [];
+  for(let i = 0; i <this.state.array.length; i++){
+    if(this.state.array[i].total>200){
+      newdata.push(this.state.array[i]);
+    }
+  }
     return (
        <VictoryChart>
-       <VictoryBar data ={this.state.array}
+       <VictoryBar data ={newdata}
        x= "username"
-       y= "total commits" /> 
+       y= "total" /> 
        </VictoryChart>
     );
     }
